@@ -44,7 +44,7 @@ Structs for the objecs and maps can be generated using the '**--generate-object-
 
 **All Options**
 
- - **--help** Shows this help dialogue
+ - **--help** Shows a help dialogue
  - **--tmx-dir <directory>** Where to recursively search for .tmx files. Can be done multiple times.
  - **--tmx-file <tmx-file>** A tiled .tmx level file to process. Can be done multiple times.
  - **--object-property <type> <name> <default>** Defines a property that all objects should have. Can be done multiple times. Tiled2asset will look for a custom property that is prefixed with '.gbdk'. When exporting, if not found on a object, it will use the default value.
@@ -55,5 +55,5 @@ Structs for the objecs and maps can be generated using the '**--generate-object-
  - **--gbdk-installation-path <name>** Where GBDK is installed
  - **--tiled-installation-path <name>** Where tiled is installed.
  - **--rasterize-tmx** When provided a GBDK & Tiled installation path, this renders the TMX tile layers to a PNG, and uses png2asset to render that to a GBDK map. That map will also be included in the structs generated for each map.
- - **--generate-object-struct** Generates a struct named 'TiledGBDKMap for maps.
- - **--generate-map-struct** Generates a struct named 'TiledGBDKObject' for objects.
+ - **--generate-object-struct** Generates a struct for maps. The name of the struct comes from the '**--object-struct-name**' parameter.
+ - **--generate-map-struct** Generates a struct for objects. The name of the struct comes from the '**--map-struct-name**' parameter.
