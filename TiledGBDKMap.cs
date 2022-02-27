@@ -155,7 +155,7 @@ namespace tiled2Asset
                 hFileLines.Add("#endif");
 
 
-                File.WriteAllLines(Configuration.gbdkObjectStructName + ".h", hFileLines);
+                File.WriteAllLines(Configuration.headersPath + "/" + Configuration.gbdkObjectStructName + ".h", hFileLines);
             }
 
             hFileLines.Clear();
@@ -203,7 +203,7 @@ namespace tiled2Asset
                 hFileLines.Add("#define TILED_GBDK_MAP_STRUCT set");
                 hFileLines.Add("typedef struct " + Configuration.gbdkMapStructName + " {\n\t" + string.Join(";\n\t", structDefinitions) + ";\n} TiledGBDKMap;"); ;
                 hFileLines.Add("#endif");
-                File.WriteAllLines(Configuration.gbdkMapStructName + ".h", hFileLines);
+                File.WriteAllLines(Configuration.headersPath + "/" + Configuration.gbdkMapStructName + ".h", hFileLines);
             }
 
         }
@@ -269,7 +269,7 @@ namespace tiled2Asset
                 hFileLines.Add("extern unsigned char* " + mapIdentifier + "_GetGBDKString(uint16_t objectId, unsigned char* string);");
             }
 
-            File.WriteAllLines(mapIdentifier + ".h", hFileLines);
+            File.WriteAllLines(Configuration.headersPath + "/" + mapIdentifier + ".h", hFileLines);
         }
 
         void WriteCFile()
@@ -424,7 +424,7 @@ namespace tiled2Asset
             cFileLines.Add("const " + Configuration.gbdkMapStructName + " " + mapIdentifier + "=" + Utils.GetStructDefinition(mapProperties) + ";");
 
 
-            File.WriteAllLines(mapIdentifier + ".c", cFileLines);
+            File.WriteAllLines(Configuration.sourcePath+"/"+mapIdentifier + ".c", cFileLines);
         }
 
         public TiledObject GetTiledObjectById(int id)
@@ -458,8 +458,15 @@ namespace tiled2Asset
             List<TiledLayer> objectsLayers = new List<TiledLayer>(map.Layers).FindAll(x => x.objects != null && x.objects.Length > 0);
             foreach (TiledLayer layer in objectsLayers) hiddenLayers.Add("--hide-layer \""+layer.name+"\"");
 
-            Utils.RunProcess(Configuration.tiledInstallationPath + "/tmxrasterizer.exe", String.Join(" ",hiddenLayers)+" \""+tmxFile+"\" " + mapIdentifier + "_tilemap.png");
-            Utils.RunProcess(Configuration.gbdkInstallationPath + "/bin/png2asset.exe", mapIdentifier + "_tilemap.png -c "+ mapIdentifier + "_tilemap.c -map -use_map_attributes ");
+            Utils.RunProcess(Configuration.tiledInstallationPath + "/tmxrasterizer.exe", String.Join(" ",hiddenLayers)+" \""+tmxFile+"\" " +  Configuration.sourcePath + "/" +mapIdentifier + "_tilemap.png");
+            Utils.RunProcess(Configuration.gbdkInstallationPath + "/bin/png2asset.exe",  Configuration.sourcePath + "/" +mapIdentifier + "_tilemap.png -c \""+ Configuration.sourcePath + "/" + mapIdentifier + "_tilemap.c\" -map -use_map_attributes ");
+
+            // png2asset.exe puts source and headers in the same folder
+            // Move the .header file to where we want
+            File.Move(Configuration.sourcePath + "/" + mapIdentifier + "_tilemap.h", Configuration.headersPath + "/" + mapIdentifier + "_tilemap.h");
+
+            // Not needed
+            File.Delete(mapIdentifier + "_tilemap.png");
 
 
         }

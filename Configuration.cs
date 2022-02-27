@@ -17,6 +17,8 @@ namespace tiled2Asset
 
         public static string gbdkInstallationPath = null;
         public static string tiledInstallationPath = null;
+        public static string sourcePath = "";
+        public static string headersPath = "";
 
         public static bool generateObjectStruct = false;
         public static bool generateMapStruct = false;
@@ -115,10 +117,20 @@ namespace tiled2Asset
                     exportObjectStrings = true;
                 }
 
-                // Should an automatic struct be generated for maps
-                else if (args[i] == "--generate-string-lookup-function")
+                // Where to create source
+                else if (args[i] == "--source-path")
                 {
-                    generateStringLookupFunction = true;
+                    sourcePath = args[i + 1];
+                    if (!Directory.Exists(sourcePath)) Directory.CreateDirectory(sourcePath);
+                    i++;
+                }
+
+                // Where to create headers
+                else if (args[i] == "--headers-path")
+                {
+                    headersPath = args[i + 1];
+                    if(!Directory.Exists(headersPath))Directory.CreateDirectory(headersPath);
+                    i++;
                 }
             }
 

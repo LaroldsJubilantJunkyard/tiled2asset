@@ -69,3 +69,5 @@ Structs for the objecs and maps can be generated using the '**--generate-object-
  - **--generate-map-struct** Generates a struct for objects. The name of the struct comes from the '**--map-struct-name**' parameter.
  - **--export-strings** Generates constant variables for each 'gbdkString.' prefixed property found on a map or an object
  - **--generate-string-lookup-function** Generates a easy function for looking up strings based on object and name
+ - **--source-path** Where to put generated .c files
+ - **--gheaders-path** Where to put generated .h files

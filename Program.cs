@@ -35,6 +35,8 @@ namespace tiled2Asset
                 Console.WriteLine("\t                                           property found on the map or an object.\n");
                 Console.WriteLine("\t--generate-string-lookup-function          Generates a string lookup function for each map. Also adding a  pointer to.\n");
                 Console.WriteLine("\t                                           this function in the map's struct and struct definition.\n");
+                Console.WriteLine("\t--source-path <directory>                  Where to put .c files.\n");
+                Console.WriteLine("\t--headers-path <directory>                 Where to put .h files.\n");
                 Console.WriteLine("");
                 Console.WriteLine("\nHelpful Resources:");
                 Console.WriteLine("\tThe GBDK-2020 Library: https://github.com/gbdk-2020/gbdk-2020/");
