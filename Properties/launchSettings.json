@@ -2,7 +2,7 @@
   "profiles": {
     "tiled2Asset": {
       "commandName": "Project",
-      "commandLineArgs": "--tmx-dir \"D:\\Business\\LaroldsJubilantJunkyard\\game-remakes\\mario-new\\Tiled\\Levels\" --object-property uint8_t type 0 --object-property uint8_t direction J_DOWN --gbdk-installation-path \"C:/gbdk\" --tiled-installation-path \"C:/progra~1/tiled\" --rasterize-tmx --generate-map-struct --generate-object-struct --help"
+      "commandLineArgs": "--tmx-dir \"D:\\Business\\LaroldsJubilantJunkyard\\game-remakes\\mario-new\\Tiled\\Levels\" --object-property uint8_t type 0 --object-property uint8_t direction J_DOWN --gbdk-installation-path \"C:/gbdk\" --tiled-installation-path \"C:/progra~1/tiled\" --rasterize-tmx --generate-map-struct --generate-object-struct --generate-string-lookup-function --export-strings"
     }
   }
 }

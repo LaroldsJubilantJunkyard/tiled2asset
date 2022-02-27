@@ -31,6 +31,10 @@ namespace tiled2Asset
                 Console.WriteLine("\t                                           to a PNG, and uses png2asset to render that to a GBDK map. That may is\n");
                 Console.WriteLine("\t--generate-object-struct                   Generates a struct named 'TiledGBDKMap for maps.\n");
                 Console.WriteLine("\t--generate-map-struct                      Generates a struct named 'TiledGBDKObject' for objects.\n");
+                Console.WriteLine("\t--export-strings                           Generates constants for each 'gbdkString.' prefixed custom.\n");
+                Console.WriteLine("\t                                           property found on the map or an object.\n");
+                Console.WriteLine("\t--generate-string-lookup-function          Generates a string lookup function for each map. Also adding a  pointer to.\n");
+                Console.WriteLine("\t                                           this function in the map's struct and struct definition.\n");
                 Console.WriteLine("");
                 Console.WriteLine("\nHelpful Resources:");
                 Console.WriteLine("\tThe GBDK-2020 Library: https://github.com/gbdk-2020/gbdk-2020/");

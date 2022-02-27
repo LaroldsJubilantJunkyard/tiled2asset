@@ -21,6 +21,8 @@ namespace tiled2Asset
         public static bool generateObjectStruct = false;
         public static bool generateMapStruct = false;
         public static bool rasterizeTMXFiles = false;
+        public static bool exportObjectStrings = false;
+        public static bool generateStringLookupFunction = false;
 
         public static void ReadFromArgs(string[] args)
         {
@@ -105,6 +107,18 @@ namespace tiled2Asset
                 else if (args[i] == "--generate-map-struct")
                 {
                     generateMapStruct = true;
+                }
+
+                // Should an automatic struct be generated for maps
+                else if (args[i] == "--export-strings")
+                {
+                    exportObjectStrings = true;
+                }
+
+                // Should an automatic struct be generated for maps
+                else if (args[i] == "--generate-string-lookup-function")
+                {
+                    generateStringLookupFunction = true;
                 }
             }
 
