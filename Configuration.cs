@@ -12,8 +12,8 @@ namespace tiled2Asset
         public static Dictionary<string, string> gbdkMapDefaultProperties = new Dictionary<string, string>();
         public static Dictionary<string, string> gbdkMapDefaultPropertyTypes = new Dictionary<string, string>();
 
-        public static string gbdkObjectStructName = "Object";
-        public static string gbdkMapStructName = "Level";
+        public static string gbdkObjectStructName = "TiledGBDKObject";
+        public static string gbdkMapStructName = "TiledGBDKMap";
 
         public static string gbdkInstallationPath = null;
         public static string tiledInstallationPath = null;
