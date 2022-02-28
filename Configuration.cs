@@ -118,28 +118,24 @@ namespace tiled2Asset
                 }
 
                 // Where to create source
-                else if (args[i] == "--source-path")
+                else if (args[i] == "--source-out-path")
                 {
                     sourcePath = args[i + 1];
+
+                    // Create the directories if they don't exist
                     if (!Directory.Exists(sourcePath)) Directory.CreateDirectory(sourcePath);
                     i++;
                 }
 
                 // Where to create headers
-                else if (args[i] == "--headers-path")
+                else if (args[i] == "--header-out-path")
                 {
                     headersPath = args[i + 1];
-                    if(!Directory.Exists(headersPath))Directory.CreateDirectory(headersPath);
+
+                    // Create the directories if they don't exist
+                    if (!Directory.Exists(headersPath))Directory.CreateDirectory(headersPath);
                     i++;
                 }
-            }
-
-            if (Configuration.generateObjectStruct){
-                Configuration.gbdkObjectStructName = "TiledGBDKObject";
-            }
-
-            if (Configuration.generateMapStruct){
-                Configuration.gbdkMapStructName = "TiledGBDKMap";
             }
 
             if (new List<string>(args).Contains("--rasterize-tmx")){

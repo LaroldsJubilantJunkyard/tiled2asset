@@ -55,6 +55,10 @@ namespace tiled2Asset
             }
         }
 
+        /// <summary>
+        /// Exports the .c and .h files that define/declare the array of all levels assed into tiled2asset this run.
+        /// </summary>
+        /// <param name="args"></param>
         public void ExportAllLevelsFiles(string[] args)
         {
 
@@ -119,6 +123,11 @@ namespace tiled2Asset
             {
                 tmxFile.RasterizeTMXFile();
             }
+        }
+
+        public List<TiledGBDKMap> TMXFiles
+        {
+            get { return tmxFiles; }
         }
     }
 
