@@ -11,7 +11,7 @@ mkdir bin
 mkdir dist
 
 
-"../bin/debug/netcoreapp3.1/tiled2asset.exe" --headers-path "headers/gen" --source-path "src/gen" --tmx-dir "./tiled" --object-property uint8_t type 0 --object-property uint8_t direction J_DOWN --gbdk-installation-path "C:/gbdk" --tiled-installation-path "C:/progra~1/tiled" --rasterize-tmx --generate-map-struct --generate-object-struct --generate-string-lookup-function --export-strings
+"../bin/debug/netcoreapp3.1/tiled2asset.exe" --header-out-path "headers/gen" --source-out-path "src/gen" --tmx-dir "./tiled" --object-property uint8_t type 0 --object-property uint8_t direction J_DOWN --gbdk-installation-path "C:/gbdk" --tiled-installation-path "C:/progra~1/tiled" --rasterize-tmx --generate-map-struct --generate-object-struct --generate-string-lookup-function --export-strings
 
 SET GBDK_HOME=C:/gbdk
 
