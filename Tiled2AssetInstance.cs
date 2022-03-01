@@ -80,7 +80,8 @@ namespace tiled2Asset
             hFileLines.AddRange(Configuration.headers);
             hFileLines.Add("#define LEVEL_COUNT " + tmxFiles.Count);
             hFileLines.Add("extern const " + Configuration.gbdkMapStructName + "* const AllLevels[LEVEL_COUNT];");
-            File.WriteAllLines(Configuration.headersPath + "/AllLevels.h", hFileLines);
+            File.WriteAllLines(Configuration.FullHeaderOutPath + "/AllLevels.h", hFileLines);
+            System.Console.WriteLine(Configuration.FullHeaderOutPath + "/AllLevels.h");
 
             #endregion
 
@@ -110,8 +111,8 @@ namespace tiled2Asset
                 cFileLines.Add("\t&" + tmxFile.mapIdentifier + ",");
             }
             cFileLines.Add("};");
-            File.WriteAllLines(Configuration.sourcePath + "/AllLevels.c", cFileLines);
-
+            File.WriteAllLines(Configuration.FullSourceOutPath + "/AllLevels.c", cFileLines);
+            System.Console.WriteLine(Configuration.FullSourceOutPath + "/AllLevels.c");
             #endregion
         }
 

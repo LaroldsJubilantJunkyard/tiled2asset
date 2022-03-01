@@ -17,8 +17,8 @@ namespace tiled2Asset
 
         public static string gbdkInstallationPath = null;
         public static string tiledInstallationPath = null;
-        public static string sourcePath = "";
-        public static string headersPath = "";
+        private static string sourcePath = "";
+        private static string headersPath = "";
 
         public static bool generateObjectStruct = false;
         public static bool generateMapStruct = false;
@@ -54,9 +54,18 @@ namespace tiled2Asset
                     string identifier = args[i + 2];
                     string defaultValue = args[i + 3];
 
-                    gbdkObjectDefaultProperties.Add(identifier,defaultValue);
-                    gbdkObjectDefaultPropertyTypes.Add(identifier, type);
-                    Console.WriteLine("Object Property: " + identifier + " is a " +type+ " which defaults to " + defaultValue);
+                    if (!gbdkObjectDefaultProperties.ContainsKey(identifier))
+                    {
+
+                        gbdkObjectDefaultProperties.Add(identifier,defaultValue);
+                        gbdkObjectDefaultPropertyTypes.Add(identifier, type);
+                        Console.WriteLine("Object Property: " + identifier + " is a " +type+ " which defaults to " + defaultValue);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Duplicate Property Specified: " + identifier + ". Using first.");
+                    }
+
 
                     i += 3;
                 }
@@ -152,7 +161,37 @@ namespace tiled2Asset
             }
         }
 
-    }
+        /// <summary>
+        /// Gets the absolute path to where .c source code files should go
+        /// </summary>
+        public static String FullSourceOutPath
+        {
+            get
+            {
+                // Did they provide a rooted path? 
+                bool rooted = Path.IsPathRooted(sourcePath) && !Path.GetPathRoot(sourcePath).Equals(Path.DirectorySeparatorChar.ToString(), StringComparison.Ordinal);
 
+                // Use the current directory if we weren't given a full path
+                return rooted ? sourcePath : Environment.CurrentDirectory + "/" + sourcePath;
+            }
+        }
+
+        /// <summary>
+        /// Gets the absolute path to where .h header code files should go
+        /// </summary>
+        public static String FullHeaderOutPath
+        {
+            get
+            {
+                // Did they provide a rooted path?
+                bool rooted = Path.IsPathRooted(headersPath) && !Path.GetPathRoot(headersPath).Equals(Path.DirectorySeparatorChar.ToString(), StringComparison.Ordinal);
+
+                // Use the current directory if we weren't given a full path
+                return rooted ? headersPath : Environment.CurrentDirectory+"/"+headersPath;
+            }
+        }
+
+
+    }
 
 }

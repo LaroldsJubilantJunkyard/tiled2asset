@@ -19,6 +19,7 @@ namespace tiled2Asset
             using (System.Diagnostics.Process pProcess = new System.Diagnostics.Process())
             {
                 pProcess.StartInfo.FileName = path;
+                pProcess.StartInfo.WorkingDirectory = Environment.CurrentDirectory;
                 pProcess.StartInfo.Arguments = arguments; //argument
                 pProcess.StartInfo.UseShellExecute = false;
                 pProcess.StartInfo.RedirectStandardOutput = true;
